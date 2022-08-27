@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, make_response, jsonify, request, abort
+from flask import Flask, make_response, request
 
 app = Flask(__name__)
 
@@ -12,11 +12,12 @@ def send_welcome():
     return make_response("Welcome to telelicense.com\n", 200)
 
 
-@app.route('/api', methods=['GET', 'POST', 'DELETE'])
+@app.route('/api', methods=['GET'])
 def run_api():
     data = request.get_json()
     print(data)
 
 
 if __name__ == "__main__":
-    app.run(ssl_context=('.env/cert.pem', '.env/key.pem'))
+    # app.run(ssl_context=('.env/cert.pem', '.env/key.pem'))
+    app.run()

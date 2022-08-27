@@ -11,10 +11,10 @@ class TestAPI(unittest.TestCase):
             'redirect_uri': 'http://xxx.xyz.com/request_listener',
         }
 
-        url = 'https://127.0.0.1:5000'
+        url = 'https://www.telelicense.site/'
 
-        response = requests.post(url, data=payload, verify=True)
-        print(response)
+        response: requests.Response = requests.get(url, data=payload, verify=True)
+        print(response.content)
 
 
 if __name__ == "__main__":

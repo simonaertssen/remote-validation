@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
+from client.client import Client
+
+
 def main():
-    print("hello")
+    c = Client()
+    c.query()
 
 
 if __name__ == "__main__":
