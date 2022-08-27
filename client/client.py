@@ -1,21 +1,18 @@
 # -*- coding: utf-8 -*-
-import platform
-import time
+from requests import Response, get
+
+from data.containers import Identification
 
 
 class Client(object):
     """A representation of a program requesting remote validation."""
-    data: dict = {}
 
-    def __init__(self) -> None:
+    def __init__(self, url: str = "www.localhost:5000") -> None:
         """Store variables of the client machine."""
-        self.data['system'] = platform.system()
-        self.data['hostname'] = platform.node()
-        self.data['machine'] = platform.machine()
-        self.data['platform'] = platform.platform()
+        self.url: str = url
 
-    def query(self) -> None:
-        """Send the data."""
-        self.data['unixtime'] = int(time.time())
+    def knock(self, id: Identification) -> Response:
+        """Send identification to a url."""
+        return get(url=self.url, data=id(), verify=False)
 
-        print(self.data)
+    # def persist(self, id: Identification) -> None:
